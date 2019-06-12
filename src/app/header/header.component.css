@@ -1,0 +1,10 @@
+header{
+    background-color:#20272a;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+  }
+  span{
+      color: red;
+  }

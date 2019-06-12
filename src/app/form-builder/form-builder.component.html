@@ -1,0 +1,115 @@
+<div class="ui-g">
+  <div class="ui-g-6">
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+      <table align="center">
+        <tr
+          [ngClass]="{'hasError': studentForm.get('studentName').errors && (studentForm.get('studentName').touched || studentForm.get('studentName').dirty)}">
+          <td class="label">
+            <h4>Student Name : &nbsp;&nbsp;</h4>
+          </td>
+          <td>
+            <span class="ui-float-label">
+              <input type="text" formControlName="studentName" pInputText id="float-input">
+              <label for="float-input">Enter Name</label>
+            </span>
+            <span class="errMsg" *ngIf="studentForm.get('studentName').errors.required">
+              Student Name is Required
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            <h4>Gender : &nbsp;&nbsp;</h4>
+          </td>
+          <td>
+            <p-radioButton name="groupname" value="rdMale" formControlName="gender"></p-radioButton>Male &nbsp;
+            <p-radioButton name="groupname" value="rdFemale" formControlName="gender"></p-radioButton>Female
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="center">
+            <h4>Address : </h4>
+          </td>
+        </tr>
+        <tr formGroupName="address">
+          <td class="label">
+            <h4>City : &nbsp;&nbsp;</h4>
+          </td>
+          <td>
+            <p-autoComplete formControlName="city" [suggestions]="filteredCities"
+              (completeMethod)="filterCitySingle($event)" field="name" [size]="30" placeholder="Cities" [minLength]="1">
+            </p-autoComplete>
+          </td>
+        </tr>
+        <tr formGroupName="address">
+          <td class="label">
+            <h4>State : &nbsp;&nbsp;</h4>
+          </td>
+          <td>
+            <p-dropdown [options]="cities" optionLabel="name" formControlName="state" [style]="{'width':'180px'}">
+            </p-dropdown>
+          </td>
+        </tr>
+        <tr formGroupName="address">
+          <td class="label">
+            <h4>Pincode : &nbsp;&nbsp;</h4>
+          </td>
+          <td>
+            <span class="ui-float-label">
+              <input type="text" formControlName="pinCode" pInputText id="float-input">
+              <label for="float-input">Enter Pincode</label>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="center">
+            <h4>Contact Details : </h4>
+          </td>
+        </tr>
+        <tr formGroupName="HomeContact">
+          <td colspan="2">
+            <b>Home : </b> <input type="text" formControlName="mobile" pInputText id="float-input"
+              placeholder="Enter mobile">&nbsp;&nbsp;
+            <input type="text" formControlName="email" pInputText id="float-input" placeholder="Enter email">
+          </td>
+        </tr>
+        <tr formGroupName="OfficeContact">
+          <td colspan="2">
+            <b>Office : </b><input type="text" formControlName="mobile" pInputText id="float-input"
+              placeholder="Enter mobile">&nbsp;&nbsp;
+            <input type="text" formControlName="email" pInputText id="float-input" placeholder="Enter email">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="btn">
+            <p-button label="Click"></p-button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div class="ui-g-6">
+    <table>
+      <tr>
+        <th>FormGroup</th>
+        <th>FormControl (studentName)</th>
+      </tr>
+      <tr>
+        <td>
+          touched : {{studentForm.touched}} <br />
+          dirty : {{ studentForm.dirty}} <br />
+          valid : {{ studentForm.valid}} <br />
+          Form Values : {{ studentForm.value | json}}
+        </td>
+        <td>
+          touched : {{studentForm.get('studentName').touched}} <br />
+          dirty : {{ studentForm.get('studentName').dirty}} <br />
+          valid : {{ studentForm.get('studentName').valid}} <br />
+          <pre>
+              FullName Value : {{ studentForm.get('studentName').value | json}}
+          </pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

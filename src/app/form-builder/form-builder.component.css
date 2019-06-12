@@ -1,0 +1,23 @@
+table{
+    /* width : 50%; */
+    border : 1px solid black;
+    padding:40px;
+    margin-top: 20px;
+}
+.label{
+    text-align: right;
+}
+.btn{
+    text-align:center;
+    /* width : 200px; */
+}
+.center{
+    text-align:center;
+}
+.hasError input[type=text] {
+    border: 1px solid #cc0033;
+}
+.errMsg{
+    color :#cc0033;
+    font-size : 12px;
+}
